@@ -16,10 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let navigationController = UINavigationController(rootViewController: ViewController())
+        let tabBarController = UITabBarController()
+        let homeViewController = HomeViewController()
+        let wishListViewController = WishListViewController()
+        let reservationController = ReservationController()
+        
+        homeViewController.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        wishListViewController.tabBarItem = UITabBarItem(title: "위시리스트", image: UIImage(systemName: "heart"), tag: 0)
+        reservationController.tabBarItem = UITabBarItem(title: "내 예약", image: UIImage(systemName: "person.fill"), tag: 0)
+        
+        tabBarController.setViewControllers(
+            [homeViewController, wishListViewController, reservationController], animated: true
+        )
         
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = navigationController
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }
     
