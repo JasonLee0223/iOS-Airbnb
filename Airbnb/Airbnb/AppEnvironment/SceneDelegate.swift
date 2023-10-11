@@ -29,6 +29,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             [homeViewController, wishListViewController, reservationController], animated: true
         )
         
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .systemGray6
+            appearance.stackedLayoutAppearance.selected.iconColor = .black
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            tabBarController.tabBar.standardAppearance = appearance
+            tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
+        } else {
+            tabBarController.tabBar.tintColor = .systemGray6
+            tabBarController.tabBar.barTintColor = .systemGray6
+        }
+        
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
