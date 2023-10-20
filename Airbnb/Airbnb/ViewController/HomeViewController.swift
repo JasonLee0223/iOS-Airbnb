@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
         
     }
     
+    private let searchBar = UISearchBar()
+    private let tapGesture = UITapGestureRecognizer()
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 }
 
@@ -27,9 +29,11 @@ extension HomeViewController {
     
     private func setupAttribures() {
         self.view.backgroundColor = .white
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "어디로 여행가세요?"
-        self.navigationItem.titleView = searchBar
+        self.searchBar.placeholder = "어디로 여행가세요?"
+        self.navigationItem.titleView = self.searchBar
+        self.tapGesture.addTarget(self, action: #selector(dismissKeyboard(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        self.searchBar.delegate = self
     }
     
     private func setupLayout() {
@@ -37,6 +41,9 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController {
+extension HomeViewController: UISearchBarDelegate {
     
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
 }
