@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class HomeViewController: UIViewController {
     
     private let searchBar = UISearchBar()
     private let tapGesture = UITapGestureRecognizer()
+    private let posterView = PosterView(frame: CGRect(origin: .zero, size: CGSize(width: 375, height: 375)))
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 }
 
@@ -30,14 +32,20 @@ extension HomeViewController {
     private func setupAttribures() {
         self.view.backgroundColor = .white
         self.searchBar.placeholder = "어디로 여행가세요?"
+        self.searchBar.delegate = self
         self.navigationItem.titleView = self.searchBar
         self.tapGesture.addTarget(self, action: #selector(dismissKeyboard(_:)))
         self.view.addGestureRecognizer(tapGesture)
-        self.searchBar.delegate = self
+        //TODO: - collectionViewLayout, Register dataSource, delegate 설정
     }
     
     private func setupLayout() {
-        
+        self.view.addSubview(self.posterView)
+        self.posterView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            
+        }
     }
 }
 
