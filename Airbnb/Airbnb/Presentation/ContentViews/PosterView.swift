@@ -20,16 +20,15 @@ final class PosterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private let backgroundView = UIImageView(image: .init(named: "mainImage"))
     private let stackView = UIStackView()
     private let mainTitle = UILabel()
     private let subTitle = UILabel()
     private let badge = BadgeLabel(padding: UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0))
     
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 254, height: 196)
-    }
-    
     private func setupAttributes() {
+        self.backgroundView.contentMode = .scaleToFill
+        self.backgroundView.clipsToBounds = true
         self.stackView.axis = .vertical
         self.stackView.spacing = 16
         self.stackView.alignment = .leading
@@ -50,18 +49,24 @@ final class PosterView: UIView {
         self.badge.font = .systemFont(ofSize: 17, weight: .regular)
         self.mainTitle.backgroundColor = .clear
         self.subTitle.backgroundColor = .clear
-        self.badge.backgroundColor = .black
+        self.badge.backgroundColor = .AirbnbCustomColor.homeSubtitle.color
         self.badge.layer.masksToBounds = true
         self.badge.layer.cornerRadius = 15
     }
     
     private func setupLayout() {
+        self.addSubview(self.backgroundView)
         self.addSubview(self.stackView)
-        self.stackView.snp.makeConstraints { make in
+        self.backgroundView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview()
+        }
+        self.stackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
         }
         self.stackView.addArrangedSubview(mainTitle)
         self.stackView.addArrangedSubview(subTitle)

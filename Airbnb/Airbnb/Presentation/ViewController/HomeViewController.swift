@@ -42,9 +42,9 @@ extension HomeViewController {
     private func setupLayout() {
         self.view.addSubview(self.posterView)
         self.posterView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
-            
+            make.leading.equalToSuperview()
         }
     }
 }
