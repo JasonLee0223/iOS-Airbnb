@@ -42,9 +42,9 @@ final class PosterView: UIView {
         self.badge.textAlignment = .center
         self.mainTitle.numberOfLines = 2
         self.subTitle.numberOfLines = 2
-        self.mainTitle.textColor = .black
-        self.subTitle.textColor = .black
-        self.badge.textColor = .white
+        self.mainTitle.textColor = .AirbnbCustomColor.homeMaintitle.color
+        self.subTitle.textColor = .AirbnbCustomColor.homeSubtitle.color
+        self.badge.textColor = .AirbnbCustomColor.homeBadge.color
         self.mainTitle.font = .systemFont(ofSize: 34, weight: .medium)
         self.subTitle.font = .systemFont(ofSize: 17, weight: .regular)
         self.badge.font = .systemFont(ofSize: 17, weight: .regular)
