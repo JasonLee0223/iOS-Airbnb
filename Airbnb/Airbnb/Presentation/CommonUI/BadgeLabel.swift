@@ -20,7 +20,6 @@ final class BadgeLabel: UILabel {
     
     convenience init(padding: UIEdgeInsets) {
         self.init()
-        
         self.padding = padding
     }
     

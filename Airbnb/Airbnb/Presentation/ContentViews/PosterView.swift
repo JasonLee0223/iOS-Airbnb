@@ -25,8 +25,6 @@ final class PosterView: UIView {
     private let subTitle = UILabel()
     private let badge = BadgeLabel(padding: UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0))
     
-    // 196
-    
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 254, height: 196)
     }
@@ -47,9 +45,9 @@ final class PosterView: UIView {
         self.mainTitle.textColor = .black
         self.subTitle.textColor = .black
         self.badge.textColor = .white
-        self.mainTitle.font = .boldSystemFont(ofSize: 34)
-        self.subTitle.font = .systemFont(ofSize: 17, weight: .medium)
-        self.badge.font = .systemFont(ofSize: 17, weight: .medium)
+        self.mainTitle.font = .systemFont(ofSize: 34, weight: .medium)
+        self.subTitle.font = .systemFont(ofSize: 17, weight: .regular)
+        self.badge.font = .systemFont(ofSize: 17, weight: .regular)
         self.mainTitle.backgroundColor = .clear
         self.subTitle.backgroundColor = .clear
         self.badge.backgroundColor = .black
