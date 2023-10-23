@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "blackHouse2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Rectangle 2blackHouse.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
