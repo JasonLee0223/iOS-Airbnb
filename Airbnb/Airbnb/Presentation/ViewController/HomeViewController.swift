@@ -13,12 +13,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
     }
     
     private let searchBar = UISearchBar()
     private let tapGesture = UITapGestureRecognizer()
-    private let posterView = PosterView(frame: CGRect(origin: .zero, size: CGSize(width: 375, height: 375)))
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 }
 
@@ -39,14 +37,7 @@ extension HomeViewController {
         //TODO: - collectionViewLayout, Register dataSource, delegate 설정
     }
     
-    private func setupLayout() {
-        self.view.addSubview(self.posterView)
-        self.posterView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview()
-        }
-    }
+    private func setupLayout() { }
 }
 
 extension HomeViewController: UISearchBarDelegate {

@@ -58,14 +58,10 @@ final class PosterView: UIView {
         self.addSubview(self.backgroundView)
         self.addSubview(self.stackView)
         self.backgroundView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
+            make.centerX.centerY.width.height.equalToSuperview()
         }
         self.stackView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.centerX.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
         }
         self.stackView.addArrangedSubview(mainTitle)
