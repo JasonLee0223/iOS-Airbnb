@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class SearchViewController: UIViewController {
     
@@ -15,6 +16,7 @@ final class SearchViewController: UIViewController {
     }
     
     private let searchController = UISearchController(searchResultsController: nil)
+    private let tableView = UITableView(frame: .zero, style: .grouped)
     
     private func setUI() {
         self.setAttributes()
@@ -28,14 +30,21 @@ final class SearchViewController: UIViewController {
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.automaticallyShowsCancelButton = false
         self.searchController.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
         self.navigationItem.title = "숙소 찾기"
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.tableView.backgroundColor = .orange
+        self.tableView.estimatedRowHeight = 64
+        self.tableView.separatorStyle = .none
+        //TODO: - Cell Register 코드 작성
     }
     
-    
-    
     private func setLayout() {
-        
+        self.view.addSubview(self.tableView)
+        self.tableView.snp.makeConstraints { make in
+            let safeArea = self.view.safeAreaLayoutGuide
+            make.top.leading.trailing.bottom.equalTo(safeArea)
+        }
     }
 }
 
