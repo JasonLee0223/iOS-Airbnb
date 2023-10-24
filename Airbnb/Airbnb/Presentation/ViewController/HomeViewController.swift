@@ -16,7 +16,6 @@ class HomeViewController: UIViewController {
     }
     
     private let searchBar = UISearchBar()
-    private let tapGesture = UITapGestureRecognizer()
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let dataSource = HomeDataSource()
 }
@@ -33,8 +32,6 @@ extension HomeViewController {
         self.searchBar.placeholder = "어디로 여행가세요?"
         self.searchBar.delegate = self
         self.navigationItem.titleView = self.searchBar
-        self.tapGesture.addTarget(self, action: #selector(dismissKeyboard(_:)))
-        self.view.addGestureRecognizer(tapGesture)
         self.collectionView.showsHorizontalScrollIndicator = false
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.clipsToBounds = true
@@ -65,7 +62,9 @@ extension HomeViewController {
 
 extension HomeViewController: UISearchBarDelegate {
     
-    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        searchBar.resignFirstResponder()
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let searchViewController = SearchViewController()
+        self.navigationItem.title = "뒤로"
+        self.navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
