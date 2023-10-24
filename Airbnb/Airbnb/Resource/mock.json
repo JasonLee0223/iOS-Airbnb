@@ -1,0 +1,42 @@
+[
+  {
+    "name": "서울",
+    "distance": "차로 30분 거리",
+    "imageName": "Seoul"
+  },
+  {
+    "name": "광주",
+    "distance": "차로 4시간 거리",
+    "imageName": "Gwangju"
+  },
+  {
+    "name": "의정부시",
+    "distance": "차로 30분 거리",
+    "imageName": "Uijeongbu-si"
+  },
+  {
+    "name": "수원시",
+    "distance": "차로 45분 거리",
+    "imageName": "Suwon-si"
+  },
+  {
+    "name": "대구",
+    "distance": "차로 3.5시간 거리",
+    "imageName": "Daegu"
+  },
+  {
+    "name": "울산",
+    "distance": "차로 4.5시간 거리",
+    "imageName": "Ulsan"
+  },
+  {
+    "name": "대전",
+    "distance": "차로 2시간 거리",
+    "imageName": "Daejeon"
+  },
+  {
+    "name": "부천시",
+    "distance": "차로 30분 거리",
+    "imageName": "Bucheon-si"
+  }
+]

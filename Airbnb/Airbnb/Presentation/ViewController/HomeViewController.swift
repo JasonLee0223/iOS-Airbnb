@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     private let searchBar = UISearchBar()
     private let tapGesture = UITapGestureRecognizer()
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    private let dataSource = HomeDataSource()
 }
 
 //MARK: - [Method] Setup HomeViewController
@@ -34,10 +35,32 @@ extension HomeViewController {
         self.navigationItem.titleView = self.searchBar
         self.tapGesture.addTarget(self, action: #selector(dismissKeyboard(_:)))
         self.view.addGestureRecognizer(tapGesture)
-        //TODO: - collectionViewLayout, Register dataSource, delegate 설정
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.clipsToBounds = true
+        self.collectionView.collectionViewLayout = self.configureOfCollectionViewLayout()
+        self.collectionView.dataSource = dataSource
+        self.collectionView.register(
+            HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.identifier
+        )
+        self.collectionView.register(PosterCell.self, forCellWithReuseIdentifier: PosterCell.identifier)
+        self.collectionView.register(NearByTravelCell.self, forCellWithReuseIdentifier: NearByTravelCell.identifier)
+        self.collectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.identifier)
     }
     
-    private func setupLayout() { }
+    private func setupLayout() {
+        self.view.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(112)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    private func configureOfCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+        UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
+            return HomeCompositionalLayout(sectionIndex: sectionIndex).createLayout()
+        }
+    }
 }
 
 extension HomeViewController: UISearchBarDelegate {

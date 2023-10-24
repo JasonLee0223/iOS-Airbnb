@@ -27,8 +27,8 @@ final class PosterView: UIView {
     private let badge = BadgeLabel(padding: UIEdgeInsets(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0))
     
     private func setupAttributes() {
-        self.backgroundView.contentMode = .scaleToFill
         self.backgroundView.clipsToBounds = true
+        self.backgroundView.contentMode = .scaleAspectFill
         self.stackView.axis = .vertical
         self.stackView.spacing = 16
         self.stackView.alignment = .leading
@@ -51,7 +51,7 @@ final class PosterView: UIView {
         self.subTitle.backgroundColor = .clear
         self.badge.backgroundColor = .AirbnbCustomColor.homeSubtitle.color
         self.badge.layer.masksToBounds = true
-        self.badge.layer.cornerRadius = 15
+        self.badge.layer.cornerRadius = 10
     }
     
     private func setupLayout() {
@@ -61,7 +61,7 @@ final class PosterView: UIView {
             make.centerX.centerY.width.height.equalToSuperview()
         }
         self.stackView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(24)
             make.leading.equalToSuperview().offset(16)
         }
         self.stackView.addArrangedSubview(mainTitle)

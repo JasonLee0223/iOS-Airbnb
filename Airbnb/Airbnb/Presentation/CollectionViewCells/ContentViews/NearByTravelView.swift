@@ -26,8 +26,8 @@ final class NearByTravelView: UIView {
     private let travelNameLabel = UILabel()
     private let travelTimeLabel = UILabel()
     
-    func configureOfImageView(by image: UIImage) {
-        self.imageView.image = image
+    func configureOfImageView(by imageName: String) {
+        self.imageView.image = UIImage(named: imageName)
     }
     
     func configureOfLabelText(travelName: String, travelTime: String) {
@@ -39,13 +39,13 @@ final class NearByTravelView: UIView {
         self.mainStackView.axis = .horizontal
         self.mainStackView.spacing = 16
         self.mainStackView.alignment = .center
-        self.mainStackView.distribution = .equalSpacing
+        self.mainStackView.distribution = .fill
         self.subStackView.axis = .vertical
         self.subStackView.spacing = 4
         self.subStackView.alignment = .leading
         self.subStackView.distribution = .equalSpacing
-        self.imageView.contentMode = .scaleAspectFill
         self.imageView.clipsToBounds = true
+        self.imageView.contentMode = .scaleAspectFill
         self.travelNameLabel.textColor = .AirbnbCustomColor.travelName.color
         self.travelTimeLabel.textColor = .AirbnbCustomColor.travelTime.color
         self.travelNameLabel.textAlignment = .left
@@ -61,7 +61,7 @@ final class NearByTravelView: UIView {
         self.subStackView.addArrangedSubview(travelNameLabel)
         self.subStackView.addArrangedSubview(travelTimeLabel)
         self.mainStackView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.centerX.centerY.width.height.equalToSuperview()
         }
     }
 }
