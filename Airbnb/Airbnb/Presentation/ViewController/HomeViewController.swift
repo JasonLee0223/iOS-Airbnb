@@ -66,5 +66,6 @@ extension HomeViewController: UISearchBarDelegate {
         let searchViewController = SearchViewController()
         self.navigationItem.title = "뒤로"
         self.navigationController?.pushViewController(searchViewController, animated: true)
+        self.searchBar.resignFirstResponder()
     }
 }
