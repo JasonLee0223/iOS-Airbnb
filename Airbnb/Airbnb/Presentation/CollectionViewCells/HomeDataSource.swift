@@ -40,7 +40,11 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
                 withReuseIdentifier: NearByTravelCell.identifier, for: indexPath) as? NearByTravelCell else { 
                 return UICollectionViewCell()
             }
+            
             if let item = self.apiManager?.getItem(indexPath: indexPath) {
+                if let cacheImage = UIImage(named: item.imageName) {
+                    ImageCacheManager.shared.setObject(cacheImage, forKey: NSString(string: item.imageName))
+                }
                 cell.configureItems(item)
             }
             return cell

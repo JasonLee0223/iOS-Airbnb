@@ -38,7 +38,8 @@ final class APIManager: JSONParsable {
     }
     
     func getItem(indexPath: IndexPath) -> Destination {
-        return result[indexPath.row]
+        let item = result[indexPath.row]
+        return item
     }
     
     internal func parseJSON() -> [Destination]? {

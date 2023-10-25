@@ -27,7 +27,10 @@ final class NearByTravelView: UIView {
     private let travelTimeLabel = UILabel()
     
     func configureOfImageView(by imageName: String) {
-        self.imageView.image = UIImage(named: imageName)
+        guard let image = self.imageView.setImageURL(imageName: imageName) else {
+            return
+        }
+        self.imageView.image = image
     }
     
     func configureOfLabelText(travelName: String, travelTime: String) {
