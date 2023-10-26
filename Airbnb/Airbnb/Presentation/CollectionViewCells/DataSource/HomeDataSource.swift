@@ -9,11 +9,18 @@ import UIKit
 
 enum SectionList: Int, CaseIterable {
     case poster = 0
-    case nearByTravel
+    case travelList
     case recommendation
 }
 
 final class HomeDataSource: NSObject, UICollectionViewDataSource {
+    
+    func giveToTravelItems() -> [Destination]? {
+        guard let items  = self.apiManager?.getAllTravelList() else {
+            return nil
+        }
+        return items
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.apiManager?.numberOfSection() ?? 0
@@ -35,9 +42,9 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             return cell
-        case .nearByTravel:
+        case .travelList:
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: NearByTravelCell.identifier, for: indexPath) as? NearByTravelCell else { 
+                withReuseIdentifier: TravelListCell.identifier, for: indexPath) as? TravelListCell else { 
                 return UICollectionViewCell()
             }
             
@@ -75,7 +82,7 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
             
             switch sectionType {
             case .poster: headerView.configureHeaderText()
-            case .nearByTravel: headerView.configureHeaderText(text: "가까운 여행지 둘러보기")
+            case .travelList: headerView.configureHeaderText(text: "가까운 여행지 둘러보기")
             case .recommendation: headerView.configureHeaderText(text: "어디에서나,여행은 \n살아보는거야!")
             }
             return headerView

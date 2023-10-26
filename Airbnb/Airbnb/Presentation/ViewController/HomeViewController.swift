@@ -41,7 +41,7 @@ extension HomeViewController {
             HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.identifier
         )
         self.collectionView.register(PosterCell.self, forCellWithReuseIdentifier: PosterCell.identifier)
-        self.collectionView.register(NearByTravelCell.self, forCellWithReuseIdentifier: NearByTravelCell.identifier)
+        self.collectionView.register(TravelListCell.self, forCellWithReuseIdentifier: TravelListCell.identifier)
         self.collectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.identifier)
     }
     
@@ -64,6 +64,8 @@ extension HomeViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let searchViewController = SearchViewController()
+        guard let items = self.dataSource.giveToTravelItems() else { return }
+        searchViewController.tableItems = items
         self.navigationItem.title = "뒤로"
         self.navigationController?.pushViewController(searchViewController, animated: true)
         self.searchBar.resignFirstResponder()

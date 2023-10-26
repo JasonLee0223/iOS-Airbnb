@@ -11,6 +11,7 @@ protocol JSONParsable {
     func numberOfSection() -> Int
     func numberOfItemsInSection(index: SectionList) -> Int
     func getItem(indexPath: IndexPath) -> Destination
+    func getAllTravelList() -> [Destination]
     func parseJSON() -> [Destination]?
     func loadLocalJSON<T>(_ filename: String) throws -> T where T: Decodable
 }
@@ -26,7 +27,7 @@ final class APIManager: JSONParsable {
     func numberOfItemsInSection(index: SectionList) -> Int {
         switch index {
         case .poster: return 1
-        case .nearByTravel:
+        case .travelList:
             guard let swapResult = self.parseJSON() else {
                 return 0
             }
@@ -40,6 +41,10 @@ final class APIManager: JSONParsable {
     func getItem(indexPath: IndexPath) -> Destination {
         let item = result[indexPath.row]
         return item
+    }
+    
+    func getAllTravelList() -> [Destination] {
+        return result
     }
     
     internal func parseJSON() -> [Destination]? {

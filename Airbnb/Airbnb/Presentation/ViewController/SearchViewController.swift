@@ -13,10 +13,13 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI()
+        self.dataSource = SearchDataSource(items: tableItems)
     }
     
+    var tableItems = [Destination]()
     private let searchController = UISearchController(searchResultsController: nil)
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private var dataSource: SearchDataSource?
     
     private func setUI() {
         self.setAttributes()
@@ -36,7 +39,8 @@ final class SearchViewController: UIViewController {
         self.tableView.backgroundColor = .orange
         self.tableView.estimatedRowHeight = 64
         self.tableView.separatorStyle = .none
-        //TODO: - Cell Register 코드 작성
+        self.tableView.dataSource = dataSource
+        //TODO: - TableViewCell을 사용해야하는데 CollectionViewCell을 사용해서 에러 발생
     }
     
     private func setLayout() {

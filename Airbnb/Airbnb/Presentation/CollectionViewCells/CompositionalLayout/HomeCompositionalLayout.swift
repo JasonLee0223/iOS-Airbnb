@@ -21,8 +21,8 @@ struct HomeCompositionalLayout {
         switch index {
         case .poster:
             return posterLayout()
-        case .nearByTravel:
-            return nearByTravelLayout()
+        case .travelList:
+            return travelListLayout()
         case .recommendation:
             return recommendationLayout()
         }
@@ -41,7 +41,7 @@ struct HomeCompositionalLayout {
         return section
     }
     
-    private func nearByTravelLayout() -> NSCollectionLayoutSection? {
+    private func travelListLayout() -> NSCollectionLayoutSection? {
         let itemInset: CGFloat = 2.5
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))

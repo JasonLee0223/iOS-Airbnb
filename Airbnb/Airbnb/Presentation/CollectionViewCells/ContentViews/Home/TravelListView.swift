@@ -1,5 +1,5 @@
 //
-//  NearByTravelView.swift
+//  TravelListView.swift
 //  Airbnb
 //
 //  Created by Jason on 10/23/23.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class NearByTravelView: UIView {
+final class TravelListView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

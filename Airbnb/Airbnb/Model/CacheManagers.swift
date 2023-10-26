@@ -1,5 +1,5 @@
 //
-//  ImageCacheManager.swift
+//  CacheManagers.swift
 //  Airbnb
 //
 //  Created by Jason on 10/25/23.
