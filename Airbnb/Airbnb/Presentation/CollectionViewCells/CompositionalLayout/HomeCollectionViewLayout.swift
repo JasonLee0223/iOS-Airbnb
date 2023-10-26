@@ -1,5 +1,5 @@
 //
-//  HomeCompositionalLayout.swift
+//  HomeCollectionViewLayout.swift
 //  Airbnb
 //
 //  Created by Jason on 10/23/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct HomeCompositionalLayout {
+struct HomeCollectionViewLayout {
     
     private let sectionIndex: Int
     
@@ -47,7 +47,7 @@ struct HomeCompositionalLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75), heightDimension: .fractionalWidth(0.5))
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0 / 4.0))
-
+ 
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)

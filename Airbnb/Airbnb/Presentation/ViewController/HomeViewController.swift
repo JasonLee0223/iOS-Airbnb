@@ -55,7 +55,7 @@ extension HomeViewController {
     
     private func configureOfCollectionViewLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
-            return HomeCompositionalLayout(sectionIndex: sectionIndex).createLayout()
+            return HomeCollectionViewLayout(sectionIndex: sectionIndex).createLayout()
         }
     }
 }

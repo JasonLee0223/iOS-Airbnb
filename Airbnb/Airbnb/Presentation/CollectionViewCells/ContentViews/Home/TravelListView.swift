@@ -47,8 +47,8 @@ final class TravelListView: UIView {
         self.subStackView.spacing = 4
         self.subStackView.alignment = .leading
         self.subStackView.distribution = .equalSpacing
-        self.imageView.clipsToBounds = true
         self.imageView.contentMode = .scaleAspectFill
+        self.imageView.clipsToBounds = true
         self.travelNameLabel.textColor = .AirbnbCustomColor.travelName.color
         self.travelTimeLabel.textColor = .AirbnbCustomColor.travelTime.color
         self.travelNameLabel.textAlignment = .left
@@ -65,6 +65,7 @@ final class TravelListView: UIView {
         self.subStackView.addArrangedSubview(travelTimeLabel)
         self.mainStackView.snp.makeConstraints { make in
             make.centerX.centerY.width.height.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 }

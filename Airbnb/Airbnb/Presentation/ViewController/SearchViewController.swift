@@ -12,13 +12,13 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
         self.dataSource = SearchDataSource(items: tableItems)
+        self.setUI()
     }
     
     var tableItems = [Destination]()
     private let searchController = UISearchController(searchResultsController: nil)
-    private let tableView = UITableView(frame: .zero, style: .grouped)
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private var dataSource: SearchDataSource?
     
     private func setUI() {
@@ -27,6 +27,7 @@ final class SearchViewController: UIViewController {
     }
     
     private func setAttributes() {
+        guard let layout = SearchCollectionViewLayout().createSearchLayout() else { return}
         self.view.backgroundColor = .white
         self.searchController.searchBar.placeholder = "어디로 여행가세요?"
         self.searchController.searchBar.delegate = self
@@ -36,16 +37,21 @@ final class SearchViewController: UIViewController {
         self.navigationItem.title = "숙소 찾기"
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.tableView.backgroundColor = .orange
-        self.tableView.estimatedRowHeight = 64
-        self.tableView.separatorStyle = .none
-        self.tableView.dataSource = dataSource
-        //TODO: - TableViewCell을 사용해야하는데 CollectionViewCell을 사용해서 에러 발생
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsVerticalScrollIndicator = false
+        self.collectionView.clipsToBounds = true
+        self.collectionView.backgroundColor = .white
+        self.collectionView.dataSource = dataSource
+        self.collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: layout)
+        self.collectionView.register(
+            HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.identifier
+        )
+        self.collectionView.register(TravelListCell.self, forCellWithReuseIdentifier: TravelListCell.identifier)
     }
     
     private func setLayout() {
-        self.view.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints { make in
+        self.view.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints { make in
             let safeArea = self.view.safeAreaLayoutGuide
             make.top.leading.trailing.bottom.equalTo(safeArea)
         }

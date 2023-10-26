@@ -7,27 +7,41 @@
 
 import UIKit
 
-final class SearchDataSource: NSObject, UITableViewDataSource {
-    
-    private var items: [Destination]
+final class SearchDataSource: NSObject, UICollectionViewDataSource {
     
     init(items: [Destination]) {
         self.items = items
         super.init()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelListCell.identifier, 
-                                                       for: indexPath) as? TravelListCell else {
-            return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelListCell.identifier,
+                                                            for: indexPath) as? TravelListCell else {
+            return UICollectionViewCell()
         }
+        cell.configureItems(items[indexPath.row])
         
-//        let item = Destination(name: <#T##String#>, distance: <#T##String#>, imageName: <#T##String#>)
-//        cell.configureItems(<#T##Destination#>)
-        return UITableViewCell()
+        return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind, withReuseIdentifier: HeaderView.identifier, for: indexPath) as? HeaderView else {
+                return UICollectionReusableView()
+            }
+            headerView.configureHeaderText(text: "근처의 인기 여행지")
+            return headerView
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
+    private var items: [Destination]
 }
