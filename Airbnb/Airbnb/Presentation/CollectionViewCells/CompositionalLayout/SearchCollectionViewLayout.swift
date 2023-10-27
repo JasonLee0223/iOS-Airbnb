@@ -27,6 +27,4 @@ struct SearchCollectionViewLayout {
         section.boundarySupplementaryItems = [header]
         return section
     }
-    
-    //TODO: - Asset 서울, 광주 이미지 수정하기
 }

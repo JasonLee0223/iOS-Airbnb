@@ -36,7 +36,7 @@ class HeaderView: UICollectionReusableView, Reusable {
     private func setLayout() {
         self.addSubview(title)
         self.title.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

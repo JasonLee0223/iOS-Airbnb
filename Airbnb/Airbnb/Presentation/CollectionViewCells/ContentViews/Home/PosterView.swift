@@ -28,7 +28,7 @@ final class PosterView: UIView {
     
     private func setupAttributes() {
         self.backgroundView.clipsToBounds = true
-        self.backgroundView.contentMode = .scaleAspectFill
+        self.backgroundView.contentMode = .scaleToFill
         self.stackView.axis = .vertical
         self.stackView.spacing = 16
         self.stackView.alignment = .leading
