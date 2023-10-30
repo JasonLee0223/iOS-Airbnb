@@ -60,8 +60,6 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
                 withReuseIdentifier: RecommendationCell.identifier, for: indexPath) as? RecommendationCell else { 
                 return UICollectionViewCell()
             }
-            let imageStorage = ["blackHouse", "blackHouse", "blackHouse"]
-            let textStorage = ["자연생활을 만끽할 수 \n있는 숙소", "자연생활을 만끽할 수 \n있는 숙소", "자연생활을 만끽할 수 \n있는 숙소"]
             
             for (imageName, textName) in zip(imageStorage, textStorage) {
                 cell.configureOfItem(imageName: imageName, summaryText: textName)
@@ -79,12 +77,7 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
                 ofKind: kind, withReuseIdentifier: HeaderView.identifier, for: indexPath) as? HeaderView else {
                 return UICollectionReusableView()
             }
-            
-            switch sectionType {
-            case .poster: headerView.configureHeaderText()
-            case .travelList: headerView.configureHeaderText(text: "가까운 여행지 둘러보기")
-            case .recommendation: headerView.configureHeaderText(text: "어디에서나,여행은 \n살아보는거야!")
-            }
+            headerView.configureHeaderText(text: headerTexts[sectionType.rawValue])
             return headerView
         default:
             return UICollectionReusableView()
@@ -92,4 +85,7 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
     }
     
     private var apiManager: JSONParsable? = APIManager()
+    private let headerTexts: [String] = ["", "가까운 여행지 둘러보기", "어디에서나,여행은 \n살아보는거야!"]
+    private let imageStorage = ["blackHouse", "blackHouse", "blackHouse"]
+    private let textStorage = ["자연생활을 만끽할 수 \n있는 숙소", "자연생활을 만끽할 수 \n있는 숙소", "자연생활을 만끽할 수 \n있는 숙소"]
 }
