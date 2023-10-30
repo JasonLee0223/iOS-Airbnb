@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 enum SectionList: Int, CaseIterable {
     case poster = 0
@@ -72,6 +73,7 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, 
                         at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let sectionType = SectionList.allCases[indexPath.section]
         switch kind {
         case UICollectionView.elementKindSectionHeader:
@@ -80,11 +82,10 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
                 return UICollectionReusableView()
             }
             
-            switch sectionType {
-            case .poster: headerView.configureHeaderText()
-            case .travelList: headerView.configureHeaderText(text: "가까운 여행지 둘러보기")
-            case .recommendation: headerView.configureHeaderText(text: "어디에서나,여행은 \n살아보는거야!")
-            }
+            headerTexts.bind { texts in
+                headerView.configureHeaderText(text: texts[sectionType.rawValue])
+            }.disposed(by: DisposeBag())
+            
             return headerView
         default:
             return UICollectionReusableView()
@@ -92,4 +93,5 @@ final class HomeDataSource: NSObject, UICollectionViewDataSource {
     }
     
     private var apiManager: JSONParsable? = APIManager()
+    private let headerTexts = Observable.of(["","가까운 여행지 둘러보기", "어디에서나,여행은 \n살아보는거야!"])
 }
