@@ -23,7 +23,7 @@ final class WishListViewController: UIViewController {
     private let titleView: UILabel = UILabel()
     private let bottomLineView: UIView = UIView(frame: .zero)
 //    private let wishItemImageView = WishItemImageView(frame: CGRect(x: 25, y: 150, width: 343.0, height: 240.0))
-//    private let wishInfoStackView = WishInfoStackView(frame: CGRect(x: 25, y: 150, width: 113, height: 18))
+//    private let wishItemView = WishInfoView(frame: CGRect(x: 25, y: 150, width: 343.0, height: 80))
     
     private func setAttributes() {
         
@@ -44,5 +44,8 @@ final class WishListViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(1.0)
         }
+//        self.wishItemView.configureOfLabel(gradeText: "4.98", gradeCountText: "(후기 50개)")
+//        self.wishItemView.configureOfLabel(itemNameText: "비담집, 비우고담은집(집전체, 최대4인)", priceText: "₩308,571 / 박")
+//        self.view.addSubview(wishItemView)
     }
 }
