@@ -22,12 +22,12 @@ final class WishItemImageView: UIView {
     
     private let stackView = UIStackView()
     private let superHost = BadgeLabel(padding: UIEdgeInsets(top: 4.0, left: 8.0, bottom: 4.0, right: 8.0))
-    private let heartImoji = UIButton()
+    private let heartEmoji = UIButton()
     private let wishItemImage = UIImageView()
     
     func configureOf(isHeartImoji: Bool) {
         if !isHeartImoji {
-            self.heartImoji.setImage(UIImage(named: "heartImoji"), for: .normal)
+            self.heartEmoji.setImage(UIImage(named: "heartImoji"), for: .normal)
         }
     }
     
@@ -47,7 +47,7 @@ final class WishItemImageView: UIView {
         self.superHost.backgroundColor = .white
         self.superHost.clipsToBounds = true
         self.superHost.layer.cornerRadius = 10
-        self.heartImoji.setImage(UIImage(named: "heartImoji"), for: .normal)
+        self.heartEmoji.setImage(UIImage(named: "heartImoji"), for: .normal)
         self.wishItemImage.clipsToBounds = true
         self.wishItemImage.layer.cornerRadius = 10
         self.wishItemImage.image = UIImage(named: "firstWishImage")
@@ -55,13 +55,13 @@ final class WishItemImageView: UIView {
     
     private func setLayout() {
         self.stackView.addArrangedSubview(superHost)
-        self.stackView.addArrangedSubview(heartImoji)
+        self.stackView.addArrangedSubview(heartEmoji)
         
         self.superHost.snp.makeConstraints { make in
             make.width.equalTo(73.0)
             make.height.equalTo(24.0)
         }
-        self.heartImoji.snp.makeConstraints { make in
+        self.heartEmoji.snp.makeConstraints { make in
             make.width.height.equalTo(24)
         }
         

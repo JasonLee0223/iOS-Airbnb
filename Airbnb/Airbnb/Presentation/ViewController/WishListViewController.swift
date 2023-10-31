@@ -23,6 +23,7 @@ final class WishListViewController: UIViewController {
     private let titleView: UILabel = UILabel()
     private let bottomLineView: UIView = UIView(frame: .zero)
 //    private let wishItemImageView = WishItemImageView(frame: CGRect(x: 25, y: 150, width: 343.0, height: 240.0))
+//    private let wishInfoStackView = WishInfoStackView(frame: CGRect(x: 25, y: 150, width: 113, height: 18))
     
     private func setAttributes() {
         
