@@ -22,6 +22,7 @@ final class WishListViewController: UIViewController {
     
     private let titleView: UILabel = UILabel()
     private let bottomLineView: UIView = UIView(frame: .zero)
+//    private let wishItemImageView = WishItemImageView(frame: CGRect(x: 25, y: 150, width: 343.0, height: 240.0))
     
     private func setAttributes() {
         
@@ -42,6 +43,5 @@ final class WishListViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(1.0)
         }
-        
     }
 }
