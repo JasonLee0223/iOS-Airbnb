@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let tabBarController = UITabBarController()
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        let wishListViewController = WishListViewController()
-        let reservationController = ReservationController()
+        let wishListViewController = UINavigationController(rootViewController: WishListViewController())
+        let reservationController = UINavigationController(rootViewController: ReservationController())
         
         homeViewController.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         wishListViewController.tabBarItem = UITabBarItem(title: "위시리스트", image: UIImage(systemName: "heart"), tag: 1)

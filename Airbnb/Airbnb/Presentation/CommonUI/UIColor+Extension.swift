@@ -15,6 +15,7 @@ extension UIColor {
         case homeBadge
         case travelName
         case travelTime
+        case bottomLineView
         
         var color: UIColor {
             switch self {
@@ -26,6 +27,8 @@ extension UIColor {
                 return UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
             case .travelTime:
                 return UIColor(red: 130.0/255.0, green: 130.0/255.0, blue: 130.0/255.0, alpha: 1.0)
+            case .bottomLineView:
+                return UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 247.0/255.0, alpha: 1.0)
             }
         }
     }
