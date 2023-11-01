@@ -11,8 +11,8 @@ class HeaderView: UICollectionReusableView, Reusable {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -26,14 +26,14 @@ class HeaderView: UICollectionReusableView, Reusable {
     
     private var title = UILabel()
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.title.textColor = .AirbnbCustomColor.homeMaintitle.color
         self.title.textAlignment = .left
         self.title.numberOfLines = 2
         self.title.font = .systemFont(ofSize: 22, weight: .regular)
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.addSubview(title)
         self.title.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()

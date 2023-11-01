@@ -12,8 +12,8 @@ final class WishScrollView: UIScrollView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -25,7 +25,7 @@ final class WishScrollView: UIScrollView {
     private let wishItemImageView = WishItemImageView(frame: .zero)
     private let wishItemView = WishInfoView(frame: .zero)
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.stackView.axis = .vertical
         self.stackView.spacing = 4
         self.stackView.alignment = .center
@@ -37,7 +37,7 @@ final class WishScrollView: UIScrollView {
         self.wishItemView.configureOfLabel(itemNameText: "비담집, 비우고담은집(집전체, 최대4인)", priceText: "₩308,571 / 박")
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.addSubview(self.contentView)
         self.contentView.snp.makeConstraints { make in
             make.centerX.centerY.width.equalToSuperview()

@@ -16,15 +16,15 @@ final class WishListViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     private let titleView: UILabel = UILabel()
     private let bottomLineView: UIView = UIView(frame: .zero)
     private let scrollView = WishScrollView(frame: .zero)
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.view.backgroundColor = .white
         self.titleView.text = "위시리스트"
         self.titleView.font = .systemFont(ofSize: 17, weight: .semibold)
@@ -37,7 +37,7 @@ final class WishListViewController: UIViewController {
         self.scrollView.showsHorizontalScrollIndicator = false
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.view.addSubview(self.bottomLineView)
         self.bottomLineView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(self.view)

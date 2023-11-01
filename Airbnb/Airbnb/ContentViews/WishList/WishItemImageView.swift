@@ -12,8 +12,8 @@ final class WishItemImageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     required init(coder: NSCoder) {
@@ -37,7 +37,7 @@ final class WishItemImageView: UIView {
         }
     }
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.stackView.axis = .horizontal
         self.stackView.alignment = .center
         self.stackView.spacing = 214
@@ -53,7 +53,7 @@ final class WishItemImageView: UIView {
         self.wishItemImage.image = UIImage(named: "firstWishImage")
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.stackView.addArrangedSubview(superHost)
         self.stackView.addArrangedSubview(heartEmoji)
         

@@ -18,11 +18,11 @@ final class ReservationController: UIViewController {
     private let titleView: UILabel = UILabel()
     
     private func setupUI() {
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.view.backgroundColor = .white
         self.titleView.text = "예약"
         self.titleView.font = .systemFont(ofSize: 17, weight: .semibold)
@@ -34,7 +34,7 @@ final class ReservationController: UIViewController {
         self.navigationController?.navigationBar.addSubview(bottomLineView)
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.bottomLineView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(1.0)

@@ -12,8 +12,8 @@ final class RecommendationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -34,7 +34,7 @@ final class RecommendationView: UIView {
     private let imageView = UIImageView()
     private let summaryLabel = UILabel()
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.stackView.axis = .vertical
         self.stackView.alignment = .leading
         self.stackView.spacing = 16
@@ -47,7 +47,7 @@ final class RecommendationView: UIView {
         self.summaryLabel.font = .systemFont(ofSize: 17, weight: .semibold)
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.addSubview(stackView)
         self.stackView.addArrangedSubview(imageView)
         self.stackView.addArrangedSubview(summaryLabel)

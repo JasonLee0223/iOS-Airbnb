@@ -12,8 +12,8 @@ final class WishInfoStackView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     required init(coder: NSCoder) {
@@ -30,7 +30,7 @@ final class WishInfoStackView: UIStackView {
         self.gradeCount.text = gradeCountText
     }
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.axis = .horizontal
         self.alignment = .fill
         self.spacing = 4
@@ -45,7 +45,7 @@ final class WishInfoStackView: UIStackView {
         self.gradeCount.textAlignment = .center
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.addArrangedSubview(starEmoji)
         self.addArrangedSubview(grade)
         self.addArrangedSubview(gradeCount)

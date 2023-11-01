@@ -12,8 +12,8 @@ final class WishInfoView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
     required init(coder: NSCoder) {
@@ -33,7 +33,7 @@ final class WishInfoView: UIStackView {
     private let itemNameLabel = UILabel()
     private let priceLabel = UILabel()
     
-    private func setAttributes() {
+    private func setupAttributes() {
         self.axis = .vertical
         self.alignment = .leading
         self.spacing = 8
@@ -46,7 +46,7 @@ final class WishInfoView: UIStackView {
         self.priceLabel.textAlignment = .left
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.addArrangedSubview(wishInfoStackView)
         self.addArrangedSubview(itemNameLabel)
         self.addArrangedSubview(priceLabel)

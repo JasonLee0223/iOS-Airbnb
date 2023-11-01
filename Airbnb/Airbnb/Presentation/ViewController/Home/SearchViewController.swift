@@ -22,11 +22,11 @@ final class SearchViewController: UIViewController {
     private var dataSource: SearchDataSource?
     
     private func setUI() {
-        self.setAttributes()
-        self.setLayout()
+        self.setupAttributes()
+        self.setupLayout()
     }
     
-    private func setAttributes() {
+    private func setupAttributes() {
         guard let layout = SearchCollectionViewLayout().createSearchLayout() else { return}
         self.view.backgroundColor = .white
         self.searchController.searchBar.placeholder = "어디로 여행가세요?"
@@ -49,7 +49,7 @@ final class SearchViewController: UIViewController {
         self.collectionView.register(TravelListCell.self, forCellWithReuseIdentifier: TravelListCell.identifier)
     }
     
-    private func setLayout() {
+    private func setupLayout() {
         self.view.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { make in
             let safeArea = self.view.safeAreaLayoutGuide
