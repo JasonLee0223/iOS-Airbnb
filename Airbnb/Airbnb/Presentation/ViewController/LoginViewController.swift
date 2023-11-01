@@ -6,11 +6,32 @@
 //
 
 import UIKit
+import SnapKit
 
 final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        self.setupUI()
+    }
+    
+    private let snsStackView = SNSStackView(frame: .zero)
+    
+    private func setupUI() {
+        self.setupAttributes()
+        self.setupLayout()
+    }
+    
+    private func setupAttributes() {
+        self.view.backgroundColor = .white
+    }
+    
+    private func setupLayout() {
+        self.view.addSubview(snsStackView)
+        self.snsStackView.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.width.equalTo(400)
+            make.height.equalTo(170)
+        }
     }
 }
