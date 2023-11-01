@@ -19,13 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
         let wishListViewController = UINavigationController(rootViewController: WishListViewController())
         let reservationController = UINavigationController(rootViewController: ReservationController())
+        let loginViewController = LoginViewController()
         
         homeViewController.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         wishListViewController.tabBarItem = UITabBarItem(title: "위시리스트", image: UIImage(systemName: "heart"), tag: 1)
         reservationController.tabBarItem = UITabBarItem(title: "내 예약", image: UIImage(systemName: "person.fill"), tag: 2)
+        loginViewController.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(systemName: "person.crop.circle.fill"), tag: 3)
         
         tabBarController.setViewControllers(
-            [homeViewController, wishListViewController, reservationController], animated: true
+            [homeViewController, wishListViewController, reservationController, loginViewController], animated: true
         )
         
         if #available(iOS 15.0, *) {
