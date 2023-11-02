@@ -8,11 +8,12 @@
 import UIKit
 import SnapKit
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController, LoginDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        self.snsStackView.delegate = self
     }
     
     private let snsStackView = SNSStackView(frame: .zero)

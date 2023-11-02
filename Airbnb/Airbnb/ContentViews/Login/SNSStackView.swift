@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+protocol LoginDelegate: AnyObject {}
+
 final class SNSStackView: UIStackView {
     
     override init(frame: CGRect) {
@@ -20,10 +22,15 @@ final class SNSStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    weak var delegate: LoginDelegate?
+    
     private let titleLabel = UILabel()
     private let buttonStackView = UIStackView()
     private let githubLogoButton = UIButton()
     private let appleLogoButton = UIButton()
+    private lazy var action = UIAction { [weak self] _ in
+        self?.touchUpGithubLoginButton()
+    }
     
     private func setupAttributes() {
         self.axis = .vertical
@@ -38,8 +45,9 @@ final class SNSStackView: UIStackView {
         self.titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = .black
-        self.githubLogoButton.setImage(UIImage(named: "Apple"), for: .normal)
-        self.appleLogoButton.setImage(UIImage(named: "Github"), for: .normal)
+        self.githubLogoButton.setImage(UIImage(named: "Github"), for: .normal)
+        self.appleLogoButton.setImage(UIImage(named: "Apple"), for: .normal)
+        self.githubLogoButton.addTarget(self, action: #selector(touchUpGithubLoginButton), for: .touchUpInside)
     }
     
     private func setupLayout() {
@@ -52,5 +60,9 @@ final class SNSStackView: UIStackView {
             make.width.equalTo(343.0)
             make.height.equalTo(120)
         }
+    }
+    
+    @objc func touchUpGithubLoginButton() {
+        LoginManager.shared.requestCodeToGithub()
     }
 }
