@@ -48,6 +48,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
     
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        
+        if url.absoluteString.starts(with: "ios-airbnb://") {
+            if let code = url.absoluteString.split(separator: "=").last.map({ String($0) }) {
+                LoginManager.shared.requestAccessTokenToGitHub(with: code)
+            }
+        } else {
+            print(url)
+        }
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
     }
     

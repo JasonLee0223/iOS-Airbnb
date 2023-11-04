@@ -25,6 +25,7 @@ final class LoginManager {
     }
     
     func getUser(accessToken: String) {
+        print("My AccessToken = \(accessToken)")
         guard let url = URL(string: "https://api.github.com/user") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -33,7 +34,9 @@ final class LoginManager {
         
         let task = URLSession.shared.dataTask(
             with: request as URLRequest, completionHandler: { data, response, error in
-                guard let data = data else { return }
+                guard let data = data else {
+                    return
+                }
                 guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                     print(String(data: data, encoding: .utf8) ?? "Not String!!")
                     return
@@ -64,6 +67,7 @@ final class LoginManager {
         let task = URLSession.shared.dataTask(
             with: request as URLRequest, completionHandler: { data, response, error in
                 guard let data = data else { return }
+                print(data)
                 guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                     print(String(data: data, encoding: .utf8) ?? "Not String!")
                     return
