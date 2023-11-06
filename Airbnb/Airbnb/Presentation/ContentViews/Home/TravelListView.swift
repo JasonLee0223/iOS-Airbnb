@@ -27,13 +27,7 @@ final class TravelListView: UIView {
     private let travelTimeLabel = UILabel()
     
     func configureOfImageView(by imageName: String) {
-        if let firstImage = UIImage(named: imageName) {
-            self.imageView.image = firstImage
-        }
-        
-        if let image = self.imageView.setImageURL(imageName: imageName) {
-            self.imageView.image = image
-        }
+        self.imageView.setImageURL(imageName: imageName)
     }
     
     func configureOfLabelText(travelName: String, travelTime: String) {
